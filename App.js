@@ -10,12 +10,11 @@ import {
   Pressable,
 } from 'react-native';
 
-
+import StartGameScreen from './screens/StartGameScreen';
 export default function App() {
-
   return (
-
-    <View style={styles.appContainer} className="bg-purple-300">
+    <View className="p-10 mt-10 flex-1 justify-center items-center">
+      <StartGameScreen />
     </View>
   );
 }
@@ -26,5 +25,4 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 20,
   },
-
 });
