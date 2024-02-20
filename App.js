@@ -4,11 +4,23 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, ImageBackground } from 'react-native';
 
 import StartGameScreen from './screens/StartGameScreen';
+import GameScreen from './screens/GameScreen';
 export default function App() {
+  const [userNumber, setUserNumber] = useState();
+
+  function pickedNumberHandler(pickNumber){
+    setUserNumber(pickNumber);
+  }
+
+  let screen = <StartGameScreen onPickNumber={pickedNumberHandler}/>
+  if (userNumber) {
+    screen = <GameScreen userNumber={userNumber}/>
+  } //jika terdapat number user, tampilkan ke game screen
+
   return (
-    <LinearGradient colors={['#254959', '#95b1bd']} style={styles.rootScreen}>
+    <LinearGradient colors={['#254959', '#95bcbd']} style={styles.rootScreen}>
       <ImageBackground source={require('./assets/images/bg.jpg')} resizeMode="cover" style={styles.rootScreen} imageStyle={styles.backgroundImage}>
-        <StartGameScreen />
+        {screen}
       </ImageBackground>
     </LinearGradient>
   );
