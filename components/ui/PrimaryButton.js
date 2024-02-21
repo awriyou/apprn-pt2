@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Colors from '../../const/cp';
 
 const PrimaryButton = ({ children, onPress }) => {
   // function pressHandler() {
@@ -35,7 +36,7 @@ const sty = StyleSheet.create({
   //   borderRadius: 20,
   // },
   buttonInnerContainer: {
-    backgroundColor: '#297697',
+    backgroundColor: Colors.primary,
     paddingVertical: 10,
     paddingHorizontal: 20,
     elevation: 2,
