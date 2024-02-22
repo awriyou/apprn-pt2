@@ -19,8 +19,8 @@ const PrimaryButton = ({ children, onPress }) => {
         onPress={pressHandler}
         android_ripple={{ color: '#254959' }}
       > */}
-      <TouchableOpacity style={sty.buttonInnerContainer} onPress={onPress}>
-        <Text className="text-white text-center">{children}</Text>
+      <TouchableOpacity className='bg-primary2' style={sty.buttonInnerContainer} onPress={onPress}>
+        <Text className="text-white text-center text-xl font-bold">{children}</Text>
       </TouchableOpacity>
       {/* </Pressable> */}
     </View>
@@ -36,7 +36,7 @@ const sty = StyleSheet.create({
   //   borderRadius: 20,
   // },
   buttonInnerContainer: {
-    backgroundColor: Colors.primary,
+    // backgroundColor: Colors.primary,
     paddingVertical: 10,
     paddingHorizontal: 20,
     elevation: 2,
