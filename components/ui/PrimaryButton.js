@@ -38,7 +38,7 @@ const sty = StyleSheet.create({
   buttonInnerContainer: {
     // backgroundColor: Colors.primary,
     paddingVertical: 3,
-    // paddingHorizontal: 24,
+    paddingHorizontal: 20,
     marginHorizontal: 6,
     marginTop: 20,
     borderRadius: 16,

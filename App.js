@@ -11,16 +11,17 @@ import GameOverScreen from './screens/GameOverScreen';
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
+  const [guessRounds, setGuessRounds] = useState(0);
 
   const [fontsLoaded] = useFonts({
-    'Anta': require('./assets/fonts/Anta-Regular.ttf'),
-    'Dancing': require('./assets/fonts/DancingScript-Regular.ttf'),
-    'DancingBold': require('./assets/fonts/DancingScript-Bold.ttf'),
-    'Oswald': require('./assets/fonts/Oswald-Regular.ttf'),
-    'OswaldBold': require('./assets/fonts/Oswald-Bold.ttf'),
+    Anta: require('./assets/fonts/Anta-Regular.ttf'),
+    Dancing: require('./assets/fonts/DancingScript-Regular.ttf'),
+    DancingBold: require('./assets/fonts/DancingScript-Bold.ttf'),
+    Oswald: require('./assets/fonts/Oswald-Regular.ttf'),
+    OswaldBold: require('./assets/fonts/Oswald-Bold.ttf'),
   });
 
-  if(!fontsLoaded) {
+  if (!fontsLoaded) {
     return <View></View>;
   }
 
@@ -29,8 +30,14 @@ export default function App() {
     setGameIsOver(false);
   }
 
-  function gameOverHandler() {
+  function gameOverHandler(numberOfRounds) {
     setGameIsOver(true);
+    setGuessRounds(numberOfRounds);
+  }
+
+  function startNewGameHandler() {
+    setUserNumber(null);
+    setGuessRounds(0);
   }
 
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
@@ -41,7 +48,13 @@ export default function App() {
   } //jika terdapat number user, tampilkan ke game screen
 
   if (gameIsOver && userNumber) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        userNumber={userNumber}
+        roundsNumber={guessRounds}
+        onStartNewGame={startNewGameHandler}
+      />
+    );
   }
 
   return (
