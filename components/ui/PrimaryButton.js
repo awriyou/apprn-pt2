@@ -2,10 +2,10 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  Touchable,
   TouchableOpacity,
   View,
 } from 'react-native';
-import Colors from '../../const/cp';
 
 const PrimaryButton = ({ children, onPress }) => {
   // function pressHandler() {
@@ -20,7 +20,7 @@ const PrimaryButton = ({ children, onPress }) => {
         android_ripple={{ color: '#254959' }}
       > */}
       <TouchableOpacity className='bg-primary2' style={sty.buttonInnerContainer} onPress={onPress}>
-        <Text className="text-white text-center text-xl font-bold">{children}</Text>
+        <Text className="text-white text-center text-lg" style={{ fontFamily: 'Anta' }}>{children}</Text>
       </TouchableOpacity>
       {/* </Pressable> */}
     </View>
@@ -37,12 +37,12 @@ const sty = StyleSheet.create({
   // },
   buttonInnerContainer: {
     // backgroundColor: Colors.primary,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 3,
+    // paddingHorizontal: 24,
+    marginHorizontal: 6,
+    marginTop: 20,
+    borderRadius: 16,
     elevation: 2,
-    marginHorizontal: 8,
-    marginTop: 10,
-    borderRadius: 20,
   },
   // pressed: {
   //   opacity: 0.75,

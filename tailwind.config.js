@@ -18,6 +18,11 @@ module.exports = {
         black: '#000',
         gray: '#f5f5f5',
       },
+      // fontFamily: {
+      //   'Dancing': ['Dancing Script', 'sans-serif'],
+      //   'Anta': ['Anta', 'sans-serif'],
+      //   'Oswald': ['Oswald', 'sans-serif'],
+      // }
     },
   },
   plugins: [],

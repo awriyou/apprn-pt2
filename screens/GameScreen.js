@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Alert, Text, View, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'
+
 import Title from '../components/ui/Title';
 import NumberContainer from '../components/game/NumberContainer';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import Card from '../components/ui/Card';
 import InstructionText from '../components/ui/InstructionText';
+
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -20,11 +23,7 @@ let minBoundary = 1;
 let maxBoundary = 100;
 
 const GameScreen = ({ userNumber, onGameOver }) => {
-  const initialGuess = generateRandomBetween(
-    1,
-    100,
-    userNumber
-  );
+  const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
   useEffect(() => {
@@ -38,10 +37,10 @@ const GameScreen = ({ userNumber, onGameOver }) => {
       (direction === 'lower' && currentGuess < userNumber) ||
       (direction === 'greater' && currentGuess > userNumber)
     ) {
-        Alert.alert('Don\'t lie!', 'You know that this is wrong...', [
-          { text: 'Sorry!', style: 'cancel' },
-        ])
-        return;
+      Alert.alert("Don't lie!", 'You know that this is wrong...', [
+        { text: 'Sorry!', style: 'cancel' },
+      ]);
+      return;
     }
 
     if (direction === 'lower') {
@@ -64,19 +63,32 @@ const GameScreen = ({ userNumber, onGameOver }) => {
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
-        <InstructionText>Higher or lower? </InstructionText>
-        <View className="">
-          <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
-            +
-          </PrimaryButton>
+        <InstructionText style={styles.InstructionText}>
+          Higher or lower?{' '}
+        </InstructionText>
+        {/* code diatas untuk mengoper styles yang di apply lewat props pada comp instructiontext */}
+        <View className="flex-row">
+          <View className="flex-1">
+            <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
+              <Ionicons name="remove-sharp" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+          <View className="flex-1">
+            <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
+              <Ionicons name="add-sharp" size={24} color="white" />
+            </PrimaryButton>
+          </View>
         </View>
       </Card>
       <View>{/* Log */}</View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+    InstructionText:{
+        marginBottom: 12
+    }
+})
 
 export default GameScreen;

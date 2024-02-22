@@ -1,8 +1,8 @@
 import { Text } from "react-native";
 
-const InstructionText = ({children}) => {
+const InstructionText = ({children, style}) => {
     return (
-      <Text className="text-xl text-secondary font-bold">{children}</Text>
+      <Text  className="text-2xl text-primary" style={[{fontFamily: 'Oswald'}, style]}>{children}</Text>
     );
 }
 

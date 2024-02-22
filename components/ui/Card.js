@@ -4,7 +4,7 @@ const Card = ({children}) => {
   return (
     <View
       style={styles.card}
-      className="items-center mx-8 rounded-lg mt-20 p-10 bg-[#95b1bd] opacity-60"
+      className="items-center mx-8 rounded-lg mt-8 p-10 bg-[#95b1bd] opacity-60"
     >
     {children}
     </View>
